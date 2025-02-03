@@ -11,6 +11,7 @@ export function ItemComponent({ item, dispatch }) {
   function clickHandler() {
     ref.current.classList.add('completed');
   }
+
   return (
     <>
       {isVisibleUpdateForm && (
