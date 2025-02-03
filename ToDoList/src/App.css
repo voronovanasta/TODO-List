@@ -1,0 +1,53 @@
+* {
+  font-family: 'Indie Flower', 'Patrick Hand', serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+body {
+  font-size: 10px;
+}
+
+#root {
+  max-width: 128rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.custom-layout {
+  min-height: 30vw;
+  width: 70vw;
+  background: rgba(238, 130, 238, 0.7);
+  border-radius: 1rem;
+}
+
+.input {
+  max-width: 28rem;
+  background-color: violet;
+  border: 0.05rem black solid;
+}
+
+.update {
+  margin: 1rem 0;
+  max-width: 24.6rem;
+}
+
+.button {
+  background-color: purple;
+  color: antiquewhite;
+  font-size: 1.5rem;
+}
+
+.item {
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: purple;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.completed {
+  background-color: rgb(97 94 94 / 69%);
+  color: rgb(232, 231, 231);
+  text-decoration: line-through;
+}
