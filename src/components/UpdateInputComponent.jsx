@@ -7,7 +7,6 @@ const { Content } = Layout;
 
 export function UpdateInputComponent({ item, dispatch, setIsVisibleUpdateForm }) {
   const { handleSubmit, control } = useForm();
-  console.log('update starts ' + item.completed);
 
   const onSubmit = (data) => {
     if (data.updatedTask) {

@@ -6,7 +6,6 @@ import { withLogger } from '../withLogger';
 
 function ToDoList() {
   const { list, dispatch } = useContext(TasksContext);
-  console.log(list);
 
   return (
     <List
