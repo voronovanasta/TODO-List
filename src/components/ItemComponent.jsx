@@ -1,15 +1,14 @@
 /* eslint-disable react/prop-types */
 import { List, Button } from 'antd';
 import { EditOutlined, CloseOutlined } from '@ant-design/icons';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { UpdateInputComponent } from './UpdateInputComponent';
 
 export function ItemComponent({ item, dispatch }) {
-  const ref = useRef();
   const [isVisibleUpdateForm, setIsVisibleUpdateForm] = useState(false);
 
   function clickHandler() {
-    ref.current.classList.add('completed');
+    dispatch({ type: 'completed_item', completedId: item.id, completed: !item.completed });
   }
 
   return (
@@ -23,16 +22,16 @@ export function ItemComponent({ item, dispatch }) {
       )}
       {!isVisibleUpdateForm && (
         <List.Item
-          ref={ref}
           style={{ color: 'antiquewhite' }}
-          className='item'
+          className={item.completed ? 'item completed' : 'item'}
           onClick={clickHandler}
           actions={[
             <Button
               key='1'
               type='text'
               icon={<EditOutlined style={{ color: '#d7c62b', fontSize: '1.5rem' }} />}
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 setIsVisibleUpdateForm(true);
               }}
             />,

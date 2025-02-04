@@ -13,7 +13,7 @@ export function FormComponent() {
 
   const onSubmit = (data) => {
     if (data.newTask) {
-      dispatch({ type: 'added_item', item: data.newTask, id: uuidv4() });
+      dispatch({ type: 'added_item', item: data.newTask, id: uuidv4(), completed: false });
     }
     reset();
   };

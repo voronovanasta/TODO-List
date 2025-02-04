@@ -5,7 +5,7 @@ import { TasksContext } from './TasksContext';
 function reducer(list, action) {
   switch (action.type) {
     case 'added_item': {
-      return [...list, { item: action.item, id: action.id }];
+      return [...list, { item: action.item, id: action.id, completed: action.completed }];
     }
     case 'deleted_item': {
       return list.filter((el) => el.id !== action.deletedId);
@@ -13,7 +13,15 @@ function reducer(list, action) {
     case 'updated_item': {
       return list.map((el) => {
         if (el.id === action.updatedId) {
-          return Object.assign({}, el, { item: action.item });
+          return { ...el, item: action.item };
+        }
+        return el;
+      });
+    }
+    case 'completed_item': {
+      return list.map((el) => {
+        if (el.id === action.completedId) {
+          return { ...el, completed: action.completed };
         }
         return el;
       });
