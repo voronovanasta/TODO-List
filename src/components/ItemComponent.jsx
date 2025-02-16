@@ -3,13 +3,26 @@ import { List, Button } from 'antd';
 import { EditOutlined, CloseOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import { UpdateInputComponent } from './UpdateInputComponent';
+import { deleteTask, completeTask } from '../service/taskService';
 
 export function ItemComponent({ item, dispatch }) {
   const [isVisibleUpdateForm, setIsVisibleUpdateForm] = useState(false);
 
-  function clickHandler() {
-    dispatch({ type: 'completed_item', completedId: item.id, completed: !item.completed });
-  }
+  const completeClickHandler = async (e) => {
+    e.stopPropagation();
+    const result = await completeTask(item.id);
+    if (result.success) {
+      dispatch({ type: 'completed_task', completedId: item.id, isCompleted: !item.isCompleted });
+    }
+  };
+
+  const deleteClickHandler = async (e) => {
+    e.stopPropagation();
+    const result = await deleteTask(item.id);
+    if (result.success) {
+      dispatch({ type: 'deleted_task', deletedId: item.id });
+    }
+  };
 
   return (
     <>
@@ -23,8 +36,8 @@ export function ItemComponent({ item, dispatch }) {
       {!isVisibleUpdateForm && (
         <List.Item
           style={{ color: 'antiquewhite' }}
-          className={item.completed ? 'item completed' : 'item'}
-          onClick={clickHandler}
+          className={item.isCompleted ? 'item completed' : 'item'}
+          onClick={completeClickHandler}
           actions={[
             <Button
               key='1'
@@ -39,11 +52,11 @@ export function ItemComponent({ item, dispatch }) {
               key='2'
               type='text'
               icon={<CloseOutlined style={{ color: 'antiquewhite', fontSize: '1.5rem' }} />}
-              onClick={() => dispatch({ type: 'deleted_item', deletedId: item.id })}
+              onClick={deleteClickHandler}
             />,
           ]}
         >
-          {item.item}
+          {item.title}
         </List.Item>
       )}
     </>

@@ -1,0 +1,22 @@
+.registration-body {
+  background: none;
+  background-color: rgba(249, 213, 166, 0.459);
+}
+.registration {
+  border: 0.2rem solid purple;
+  padding: 1.5rem;
+}
+
+.input-wrapper {
+  min-width: 28vw;
+}
+
+.input-wrapper input {
+  height: 2.5rem;
+  border: 0.1rem solid purple;
+}
+
+.registration-btn {
+  background-color: blue;
+  height: 2.5rem;
+}

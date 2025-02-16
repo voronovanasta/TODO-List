@@ -2,19 +2,23 @@
 import { useForm, Controller } from 'react-hook-form';
 import { Button, Input } from 'antd';
 import { Layout } from 'antd';
+import { editTask } from '../service/taskService';
 
 const { Content } = Layout;
 
 export function UpdateInputComponent({ item, dispatch, setIsVisibleUpdateForm }) {
   const { handleSubmit, control } = useForm();
 
-  const onSubmit = (data) => {
-    if (data.updatedTask) {
-      dispatch({
-        type: 'updated_item',
-        item: data.updatedTask,
-        updatedId: item.id,
-      });
+  const onSubmit = async (data) => {
+    if (data.editedTask) {
+      const result = await editTask(item.id, data.editedTask);
+      if (result.success) {
+        dispatch({
+          type: 'edited_task',
+          title: data.editedTask,
+          updatedId: item.id,
+        });
+      }
     }
     setIsVisibleUpdateForm(false);
   };
@@ -24,8 +28,8 @@ export function UpdateInputComponent({ item, dispatch, setIsVisibleUpdateForm })
       <form onSubmit={handleSubmit(onSubmit)}>
         <Content>
           <Controller
-            defaultValue={item.item}
-            name='updatedTask'
+            defaultValue={item.title}
+            name='editedTask'
             control={control}
             render={({ field }) => <Input {...field} className='input update' />}
           />

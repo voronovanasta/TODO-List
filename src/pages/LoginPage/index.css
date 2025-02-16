@@ -1,0 +1,14 @@
+.login-body {
+  background: none;
+  background-color: rgba(249, 213, 166, 0.459);
+}
+
+.login {
+  border: 0.2rem solid purple;
+  padding: 1.5rem;
+}
+
+.login-btn {
+  background-color: purple;
+  height: 2.5rem;
+}
