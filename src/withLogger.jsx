@@ -6,10 +6,6 @@ export function withLogger(WrappedComponent) {
   return (props) => {
     const { list } = useContext(TasksContext);
     const prevList = useRef([]);
-
-    console.log(list);
-    console.log(prevList.current);
-
     if (prevList.current.length < list.length && prevList.current.length !== 0) {
       console.log(`Task "${list.at(-1).title}" will be added!`);
     }
