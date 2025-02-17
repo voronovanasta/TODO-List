@@ -10,11 +10,11 @@ function App() {
   return (
     <Routes>
       <Route element={<PublicRoute />}>
-        <Route path='/registration' element={<RegistrationPage />} />
-        <Route path='/login' element={<LoginPage />} />
+        <Route path='/' element={<RegistrationPage />} />
+        <Route path='login' element={<LoginPage />} />
       </Route>
       <Route element={<PrivateRoute />}>
-        <Route path='/main' element={<MainPage />} />
+        <Route path='main' element={<MainPage />} />
       </Route>
       {/* <Route path='*' element={<NotFoundPage />} /> */}
     </Routes>
