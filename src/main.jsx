@@ -6,7 +6,7 @@ import { StrictMode } from 'react';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HashRouter>
+    <HashRouter basename={'/TODO-List'}>
       <App />
     </HashRouter>
   </StrictMode>
