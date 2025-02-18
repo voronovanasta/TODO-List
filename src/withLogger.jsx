@@ -18,7 +18,7 @@ export function withLogger(WrappedComponent) {
     }
     if (prevList.current.length === list.length) {
       prevList.current.forEach((el, index) => {
-        if (el.item !== list[index].item) {
+        if (el.title !== list[index].title) {
           console.log(`Task "${el.title}" will be edited!`);
         }
       });
