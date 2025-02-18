@@ -25,7 +25,7 @@ export const createUser = async (data) => {
 export const loginUser = async (data) => {
   try {
     const response = await instance.post('/auth/login', data);
-    console.log(response);
+
     return {
       success: true,
       token: response.data.token,

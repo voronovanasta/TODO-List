@@ -83,7 +83,7 @@ export function LoginPage() {
           login
         </Button>
       </form>
-      <Link style={{ fontSize: '1rem' }} to='/'>
+      <Link style={{ fontSize: '1rem' }} to='/registration'>
         Dont have an account? Sign up
       </Link>
     </>

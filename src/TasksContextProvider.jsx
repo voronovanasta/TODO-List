@@ -34,7 +34,7 @@ function reducer(list, action) {
   throw Error('Unknown action: ' + action.type);
 }
 
-export function TasksContextComponent({ children }) {
+export function TasksContextProvider({ children }) {
   const [list, dispatch] = useReducer(reducer, []);
   useEffect(() => {
     const getTodos = async () => {

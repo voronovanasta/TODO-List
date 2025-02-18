@@ -1,6 +1,6 @@
 import { Layout } from 'antd';
 import { FormComponent } from '../../components/FormComponent';
-import { TasksContextComponent } from '../../TasksContextComponent';
+import { TasksContextProvider } from '../../TasksContextProvider';
 import { ListComponent } from '../../components/ListComponent';
 import { useEffect } from 'react';
 import './index.css';
@@ -23,14 +23,14 @@ export function MainPage() {
     <>
       <Layout className='custom-layout'>
         <h1>Get things done!</h1>
-        <TasksContextComponent>
+        <TasksContextProvider>
           <Content>
             <FormComponent />
           </Content>
           <Content style={{ display: 'flex', justifyContent: 'space-evenly' }}>
             <ListComponent style={{ display: 'flex', alignItems: 'center' }} />
           </Content>
-        </TasksContextComponent>
+        </TasksContextProvider>
       </Layout>
       <Link className='link' onClick={logoutClickHandler} to='/login'>
         logout

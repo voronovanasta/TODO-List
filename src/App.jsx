@@ -10,7 +10,7 @@ function App() {
   return (
     <Routes>
       <Route element={<PublicRoute />}>
-        <Route path='/' element={<RegistrationPage />} />
+        <Route path='/registration' element={<RegistrationPage />} />
         <Route path='/login' element={<LoginPage />} />
       </Route>
       <Route element={<PrivateRoute />}>

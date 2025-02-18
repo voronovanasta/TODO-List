@@ -4,9 +4,20 @@ const instance = axios.create({
   baseURL: 'https://todo-redev.herokuapp.com/api/todos',
   headers: {
     'Content-Type': 'application/json',
-    Authorization: 'Bearer ' + localStorage.getItem('token'),
   },
 });
+instance.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers['Authorization'] = 'Bearer ' + token;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 export const getTasks = async () => {
   try {
